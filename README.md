@@ -5,10 +5,10 @@ Converts your offline music into a youtube playlist.
 
 Stack Used:
 ==============
-<ul>
-<li>1)Metro Bootstrap</li>
-<li>2)JQuery</li>
-<li>3)Youtube API V2.0</li>
-</ul>
+<ol>
+<li>Metro Bootstrap</li>
+<li>JQuery</li>
+<li>Youtube API V2.0</li>
+</ol>
 <div></div>
 Will provide the Appspot/Heroku link soon
