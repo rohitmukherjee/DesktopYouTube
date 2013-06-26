@@ -1,10 +1,25 @@
-<input type="file" id="files" name="files[]" multiple />
-<output id="list"></output>
+<html>
 <title>Desktop to YouTube </title>
+<head><link rel="stylesheet" type="text/css" href="css/metro-bootstrap.css"></head>
+<div class="container">
+<div class="page-header">
+<h1>Desktop to YouTube Converter</h1>
+</div>
+
+<div class="hero-unit">
+<h3>Pick Music Files </h3>
+<div>
+<input type="file" id="files" name="files[]" multiple />
+</div>
+<output id="list"></output>
+</div>
 <h3>Matched Videos</h3>
 <div id="videos"></div>
-<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script> 
-<script type="text/javascript">
+<table class="table">
+<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+<script src="javascript/FileSaver.js"></script>
+<script type="text/javascript" src="javascript/metro-docs.js"></script> 
+<script>
   var songNames = new Array();
   var newPage="";
   
@@ -25,7 +40,7 @@
       console.log(JSON.stringify(data));
       var entries = data.data.items;
       var videoAdded = document.getElementById('videos');
-      var html = ['<ul>'];
+      var html = ['<table class="table-striped">'];
       
       for (var i = 0; i < entries.length; i++) {
         var entry = entries[i];
@@ -34,23 +49,36 @@
         //alert(id);
         var videoPlayer = entry.player.default;
         console.log(videoPlayer);
-       newPage+="<div><iframe id='ytplayer' type='text/html' width='640' height='390' src='http://www.youtube.com/embed/"+ id +"' frameborder='0'></iframe></div>";
-        html.push('<li>','<a href=',videoPlayer,'>',title, '</a></li>');
+        // newPage+="<div><iframe id='ytplayer' type='text/html' width='640' height='390' src='http://www.youtube.com/embed/"+ id +"' frameborder='0'></iframe></div>";
+        html.push('<tr>','<a href=',videoPlayer,'>',title, '</a></tr>');
+        html.push("<div><iframe id='ytplayer' type='text/html' width='640' height='390' src='http://www.youtube.com/embed/"+ id +"' frameborder='0'></iframe></div>");
+        html.push('<br></br>');
+        newPage+=html;
+       
      }
-     html.push('</ul>');
-    document.getElementById('videos').innerHTML += html.join('');
-    //alert(newPage);
-    v
+     html.push('</table>');
+     document.getElementById('videos').innerHTML += html.join('');
+  
+    
   }
   function youtubeRequest(){
     for(var i=0;i<songNames.length;i++){
       var requestURL = "http://gdata.youtube.com/feeds/api/videos?q=" + songNames[i] + "&alt=jsonc&max-results=1&callback=showMyVideos&v=2";
       console.log("Creating GET Request");  
-      $.get(requestURL);
+      var jqxhr = $.get(requestURL);
     }
-
-  var opened = window.open("results.html");
-  opened.document.write(newPage);
+   //creating new HTML Playlist when all GET requests are over
+   jqxhr.done( function(data){
+   var videoLinksArray = new Array();
+   videoLinksArray[0] = document.getElementById('videos').innerHTML;
+   var blob = new Blob(videoLinksArray, {type: "text/plain;charset=utf-8"});
+   saveAs(blob, "PlayList.html");});
   }
+  
   document.getElementById('files').addEventListener('change', handleFileSelect, false);
+ 
+ 
  </script>
+
+</div>
+ </html>
