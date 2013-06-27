@@ -2,6 +2,7 @@ DesktopYouTube
 ==============
 
 Converts your offline music into a youtube playlist.
+Try out the app at :  http://mukherjeerohit93.azurewebsites.net/
 
 Stack Used:
 ==============
@@ -11,4 +12,5 @@ Stack Used:
 <li>Youtube API V2.0</li>
 </ol>
 <div></div>
-Will provide the Appspot/Heroku link soon
+
+License: http://www.apache.org/licenses/LICENSE-2.0
