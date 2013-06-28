@@ -14,7 +14,9 @@
 <h3>Chosen Files:</h3>
 <output id="list"></output>
 </div>
+<div class="span12">
 <h3>Matched Videos</h3>
+<a class="btn" id="downloadLink">Download Playlist</a>
 <div id="videos"></div>
 <table class="table">
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
@@ -72,14 +74,16 @@
    jqxhr.done( function(data){
    var videoLinksArray = new Array();
    videoLinksArray[0] = document.getElementById('videos').innerHTML;
+   $("#downloadLink").click(function(){
    var blob = new Blob(videoLinksArray, {type: "text/plain;charset=utf-8"});
    saveAs(blob, "PlayList.html");});
+  });
   }
   
   document.getElementById('files').addEventListener('change', handleFileSelect, false);
  
  
  </script>
-
+</div>
 </div>
  </html>
