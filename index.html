@@ -17,6 +17,7 @@
 <div class="span12">
 <h3>Matched Videos</h3>
 <a class="btn" id="downloadLink">Download Playlist</a>
+<hr class="divider"></h>
 <div id="videos"></div>
 <table class="table">
 <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
@@ -64,6 +65,33 @@
   
     
   }
+  //function fires AJAX request to restAPI.php to generate user#.html
+  function  sendAJAXRequest(videoLinksArray){
+    request = $.ajax({
+        url: "/restAPI.php",
+        type: "post",
+        data: {
+          htmlData : videoLinksArray
+        },
+    });
+
+    // callback handler that will be called on success
+    request.done(function (response, textStatus, jqXHR){
+        // log a message to the console
+        console.log("Callback works");
+    });
+
+    // callback handler that will be called on failure
+    request.fail(function (jqXHR, textStatus, errorThrown){
+        // log the error to the console
+        console.error(
+            "The following error occured: "+
+            textStatus, errorThrown
+        );
+
+  });
+  }
+  //function sends GET requests to Youtube Web
   function youtubeRequest(){
     for(var i=0;i<songNames.length;i++){
       var requestURL = "http://gdata.youtube.com/feeds/api/videos?q=" + songNames[i] + "&alt=jsonc&max-results=1&callback=showMyVideos&v=2";
@@ -74,16 +102,19 @@
    jqxhr.done( function(data){
    var videoLinksArray = new Array();
    videoLinksArray[0] = document.getElementById('videos').innerHTML;
+    sendAJAXRequest(videoLinksArray[0]);
+   //Download .html file when download button is clicked
    $("#downloadLink").click(function(){
    var blob = new Blob(videoLinksArray, {type: "text/plain;charset=utf-8"});
    saveAs(blob, "PlayList.html");});
   });
+  
   }
   
   document.getElementById('files').addEventListener('change', handleFileSelect, false);
  
  
- </script>
+</script>
 </div>
 </div>
  </html>
