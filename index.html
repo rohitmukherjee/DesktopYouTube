@@ -15,6 +15,7 @@
 <output id="list"></output>
 </div>
 <div class="span12">
+
 <h3>Matched Videos</h3>
 <a class="btn" id="downloadLink">Download Playlist</a>
 <hr class="divider"></h>
@@ -76,9 +77,9 @@
     });
 
     // callback handler that will be called on success
-    request.done(function (response, textStatus, jqXHR){
+    request.success(function (response, textStatus, jqXHR){
         // log a message to the console
-        console.log("Callback works");
+        alert(reponse);
     });
 
     // callback handler that will be called on failure
@@ -116,5 +117,19 @@
  
 </script>
 </div>
+
+<div class="footer">
+
+
+<a href="#" 
+  onclick="
+    window.open(
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 
+      'facebook-share-dialog', 
+      'width=626,height=436'); 
+    return false;">
+  Share on Facebook
+</a>
+</div>  
 </div>
  </html>
