@@ -68,11 +68,13 @@
   }
   //function fires AJAX request to restAPI.php to generate user#.html
   function  sendAJAXRequest(videoLinksArray){
+    var apiMode = "write";
     request = $.ajax({
-        url: "/restAPI.php",
-        type: "post",
+        url: "/API.php",
+        type: "get",
         data: {
           htmlData : videoLinksArray
+          mode: apiMode;
         },
     });
 
@@ -129,7 +131,7 @@
       'width=626,height=436'); 
     return false;">
   Share on Facebook
-</a>
+</a>  
 </div>  
 </div>
  </html>
