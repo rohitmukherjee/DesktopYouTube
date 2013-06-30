@@ -18,6 +18,9 @@
 
 <h3>Matched Videos</h3>
 <a class="btn" id="downloadLink">Download Playlist</a>
+<hr></hr>
+<div id="shareable" class="well well-small">
+</div>
 <hr class="divider"></h>
 <div id="videos"></div>
 <table class="table">
@@ -73,15 +76,14 @@
         url: "/API.php",
         type: "get",
         data: {
-          htmlData : videoLinksArray
-          mode: apiMode;
+          htmlData : videoLinksArray,
+          mode: apiMode,
         },
     });
 
     // callback handler that will be called on success
     request.success(function (response, textStatus, jqXHR){
-        // log a message to the console
-        alert(reponse);
+        document.getElementById('shareable').innerHTML = response;
     });
 
     // callback handler that will be called on failure
@@ -126,11 +128,11 @@
 <a href="#" 
   onclick="
     window.open(
-      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(location.href), 
+      'https://www.facebook.com/sharer/sharer.php?u='+encodeURIComponent(document.getElementById('shareable').innerHTML), 
       'facebook-share-dialog', 
       'width=626,height=436'); 
     return false;">
-  Share on Facebook
+  Share Playlist on Facebook
 </a>  
 </div>  
 </div>
