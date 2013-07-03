@@ -9,6 +9,8 @@ Stack Used:
 <ol>
 <li>Metro Bootstrap</li>
 <li>JQuery</li>
+<li>PHP</li>
+<li>MYSQL</li>
 <li>Youtube API V2.0</li>
 </ol>
 <div></div>
