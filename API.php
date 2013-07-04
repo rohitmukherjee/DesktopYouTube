@@ -9,7 +9,7 @@ $connection =  mysql_connect('localhost','root','');
 mysql_set_charset('UTF-8');
 if(!$connection)
 	{
-		die("Failed");
+		die("Shareable URLs not available");
 	}
 $db_selected = mysql_select_db($databaseName,$connection);
 if(!$db_selected)
