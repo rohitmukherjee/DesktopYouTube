@@ -88,10 +88,7 @@ No playlist chosen
 
     // callback handler that will be called on success
     request.success(function (response, textStatus, jqXHR){
-        if(typeof response != 'undefined')
         document.getElementById('shareable').innerHTML = response;
-        else
-        document.getElementById('shareable').innerHTML ="Shareable URLs coming soon";
     });
 
     // callback handler that will be called on failure
