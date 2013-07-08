@@ -17,4 +17,4 @@ Stack Used:
 
 License: http://www.apache.org/licenses/LICENSE-2.0
 
-[Screenshots](screenshots/UI.jpg?raw=true)
+[Screenshots](https://github.com/rohitmukherjee/DesktopYouTube/blob/master/screenshots/UI.JPG)
