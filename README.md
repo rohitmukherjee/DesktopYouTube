@@ -17,4 +17,6 @@ Stack Used:
 
 License: http://www.apache.org/licenses/LICENSE-2.0
 
-[Screenshots](https://github.com/rohitmukherjee/DesktopYouTube/blob/master/screenshots/UI.JPG)
+![ScreenShot](https://raw.github.com/rohitmukherjee/DesktopYouTube/master/screenshots/genPlaylist2.JPG)
+![ScreenShot](https://raw.github.com/rohitmukherjee/DesktopYouTube/master/screenshots/genPlaylist1.JPG)
+![ScreenShot](https://raw.github.com/rohitmukherjee/DesktopYouTube/master/screenshots/selectedMusicFiles.JPG)
